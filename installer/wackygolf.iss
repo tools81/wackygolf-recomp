@@ -165,6 +165,8 @@ begin
     'install any that are missing.');
   RomPage.Add('Disc image (.cue or .bin):',
     'CD-i disc image (*.cue;*.bin)|*.cue;*.bin|All files|*.*', '.cue');
+  { unattended installs: setup.exe /VERYSILENT /ROM="D:\Games\wacky.cue" }
+  RomPage.Values[0] := ExpandConstant('{param:ROM|}');
 end;
 
 procedure CurPageChanged(CurPageID: Integer);

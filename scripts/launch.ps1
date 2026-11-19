@@ -28,7 +28,7 @@ if (-not $NoUpdate -and -not $env:WACKYGOLF_NO_UPDATE) {
 if ($needBuild) {
     # visible window: progress, prompts for missing tools
     $p = Start-Process powershell.exe -Wait -PassThru -ArgumentList @(
-        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', (Join-Path $PSScriptRoot 'build-game.ps1'), '-NoPause')
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', (Join-Path $PSScriptRoot 'build-game.ps1'))
     if ($p.ExitCode -ne 0) {
         if (Test-Path $exe) {
             [System.Windows.Forms.MessageBox]::Show('Rebuilding after the update failed; starting the previous build. Run Setup to try again.', 'Wacky Golf', 'OK', 'Warning') | Out-Null

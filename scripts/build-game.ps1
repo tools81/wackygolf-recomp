@@ -3,7 +3,7 @@
 # update.  Offers to install missing build tools with winget.
 param(
     [switch]$InstallTools,   # install missing tools without asking
-    [switch]$NoPause         # do not wait for a key at the end
+    [switch]$NoPause         # do not wait for a key after an error
 )
 . (Join-Path $PSScriptRoot 'common.ps1')
 $host.UI.RawUI.WindowTitle = 'Wacky Golf - building the game'
@@ -49,7 +49,7 @@ try {
     Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red
     $code = 1
 }
-if (-not $NoPause) {
+if ($code -ne 0 -and -not $NoPause) {
     Write-Host ''
     Read-Host 'Press Enter to close' | Out-Null
 }
