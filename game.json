@@ -1,0 +1,12 @@
+{
+  "title": "The Wacky World of Miniature Golf with Eugene Levy",
+  "exe_name": "wackygolf",
+  "modules": [
+    {
+      "file": "auto",
+      "base": "0x100000",
+      "extra_entries": [],
+      "a5_table": "auto"
+    }
+  ]
+}

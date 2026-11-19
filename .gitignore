@@ -1,0 +1,23 @@
+# game data and everything derived from it: never committed or released
+rom/
+extracted/
+gen/
+*.bin
+*.cue
+rom.cfg
+
+# build output
+build/
+dist/
+*.exe
+tools/__pycache__/
+__pycache__/
+
+# per-user data and debug output
+saves/
+run/
+*.state
+*.bmp
+*.wav
+ramdump.bin
+recomp.log
