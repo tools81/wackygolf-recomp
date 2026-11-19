@@ -46,7 +46,8 @@ ArchitecturesInstallIn64BitMode=x64compatible
 Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Shortcuts:"
 
 [Files]
-Source: "{#Stage}\*"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs ignoreversion
+Source: "{#Stage}\*"; DestDir: "{app}"; Excludes: "\VERSION"; Flags: recursesubdirs createallsubdirs ignoreversion
+Source: "{#Stage}\VERSION"; DestDir: "{app}"; Flags: ignoreversion; AfterInstall: WriteRomCfg
 
 [Dirs]
 Name: "{app}\saves"
@@ -194,9 +195,10 @@ begin
   end;
 end;
 
-procedure CurStepChanged(CurStep: TSetupStep);
+{ rom.cfg is read by the build in [Run] and by the game, so it is written as
+  soon as the files are copied ([Run] entries run before ssPostInstall) }
+procedure WriteRomCfg();
 begin
-  { rom.cfg is read by the build and by the game }
-  if CurStep = ssPostInstall then
+  if Trim(RomPage.Values[0]) <> '' then
     SaveStringToFile(ExpandConstant('{app}\rom.cfg'), 'rom=' + Trim(RomPage.Values[0]) + #13#10, False);
 end;
