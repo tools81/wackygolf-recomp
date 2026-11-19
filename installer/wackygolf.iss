@@ -18,7 +18,7 @@
 #endif
 
 #define AppName "Wacky World of Miniature Golf (Recomp)"
-#define LaunchArgs "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File ""{app}\scripts\launch.ps1"""
+#define LaunchArgs '-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File ""{app}\scripts\launch.ps1""'
 
 [Setup]
 AppId={{6E4C2F2B-8A47-4E3C-9C55-2B7F3E1D9A10}
